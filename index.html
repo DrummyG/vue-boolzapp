@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+    <div class="top">
+        <div id="app">
+            <div class="side">
+                <div class="my-user">
+                    <div class="profile">
+                        <img src="img/avatar_io.jpg" alt="Sofia">
+                        <p>Sofia</p>
+                    </div>
+                    <div class="buttons">
+                        <i class="fa-solid fa-circle-notch"></i>
+                        <i class="fa-solid fa-message"></i>
+                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                    </div>
+                </div>
+                <div class="bell">
+                    <i class="fa-solid fa-bell-slash"></i>
+                    <div class="note">
+                        <p>Ricevi notifiche di nuovi messaggi</p>
+                        <p class="under"><a href="">Attiva notifiche desktop</a></p>
+                    </div>
+                </div>
+                <div class="search">
+                    <div class="around">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" v-model="filterer" @keyup="filter">
+                    </div>
+                </div>
+
+                <div class="users">
+                    <div class="user" v-for="(user, index) in usersFiltered" @click="effetto(index)" :class="index === counter ? 'active' : ''">
+                        <img :src="'img/avatar' + user.avatar + '.jpg'" alt="user.name">
+                        <div class="info">
+                            <p>{{user.name}}</p>
+                            <p class="grey">{{user.messages[user.messages.length - 1].message}}</p>
+                        </div>
+                        <p class="hour">{{user.messages[user.messages.length - 1].date}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="main" v-for="(user, index) in contacts" :class="index === counter ? 'active' : ''">
+                <div class="my-user">
+                    <div class="profile">
+                        <img :src="'img/avatar' + user.avatar + '.jpg'" alt="user.name">
+                        <div class="info">
+                            <p>{{user.name}}</p>
+                            <p class="grey">ultimo accesso oggi alle {{user.messages[user.messages.length - 1].date}}</p>
+                        </div>
+                    </div>
+                    <div class="buttons">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <i class="fa-solid fa-paperclip"></i>
+                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                    </div>
+                </div>
+                <div class="chat">
+                    <div class="box" v-for="(text, index) in user.messages" :class="text.status == 'sent' ? 'sent' : 'received'">
+                        <p class="corpo">{{text.message}}</p>
+                        <div class="dropdown">
+                            <i class="fa-solid fa-angle-down"></i>
+                            <div class="dropdown-content">
+                                <p>Info</p>
+                                <p @click="elimina(user.messages, index)">Cancella</p>
+                            </div>
+                        </div>
+                        <p class="ora">{{text.date}}</p>
+                    </div>
+                </div>
+                <div class="type">
+                    <i class="fa-regular fa-face-smile"></i>
+                    <input type="text" v-model="add" @keyup.enter="aggiungi(user)">
+                    <i class="fa-solid fa-microphone"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bottom"></div>
+    <script src="js/script.js"></script>
+</body>
+</html>

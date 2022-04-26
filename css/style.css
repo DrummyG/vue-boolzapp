@@ -1,0 +1,268 @@
+*{
+	margin:0;
+	padding: 0;
+	box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.top{
+    padding-top: 30px;
+    height: 100px;
+    width: 100%;
+    background-color: hsl(174deg 100% 29%);
+}
+
+body{
+    background-color: hsl(77deg 9% 85%);
+}
+
+#app{
+    height: 90vh;
+    width: 1200px;
+    margin: 0 auto;
+    display: flex;
+}
+
+.side{
+ width: 30%;
+ height: 100%;
+ background-color: white;
+}
+
+.main{
+    border-left: 1px solid lightgray;
+    width: 70%;
+    height: 100%;
+    display: none;
+}
+
+.main.active{
+    display: block;
+}
+
+.my-user, .type{
+    height: 60px;
+    padding: 10px;
+    background-color: hsl(0deg 0% 92%);
+    display: flex;
+    align-items: center;
+}
+
+.my-user{
+    justify-content: space-between;
+}
+
+.profile{
+    display: flex;
+    align-items: center;
+}
+
+.profile img{
+    width: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.profile p{
+    font-size: small;
+}
+
+.buttons{
+    color: #b1b1b1;
+}
+
+.buttons i{
+    padding: 5px;
+}
+
+.bell{
+    height: 70px;
+    background-color: hsl(199deg 95% 77%);
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+
+.fa-bell-slash{
+    font-size: 20px;
+    padding: 10px;
+    border-radius: 50%;
+    margin-right: 10px;
+    color: hsl(199deg 95% 77%);
+    background-color: white;
+}
+
+.note{
+    font-size: small;
+}
+
+.under a{
+    font-size: smaller;
+    color: grey;
+}
+
+.search{
+    height: 40px;
+    background-color: hsl(0deg 0% 98%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.around{
+    height: 30px;
+    width: 80%;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    color: #b1b1b1;
+    border-radius: 20px;
+}
+
+.around input{
+    border: 0px;
+    height: 95%;
+    width: 100%;
+    margin-left: 10px;
+    padding-left: 5px;
+}
+
+.users{
+    height: calc(100% - 170px);
+    overflow-y: scroll
+}
+
+.user{
+    height: 70px;
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    position: relative;
+}
+
+.user.active{
+    background-color: hsl(180deg 5% 92%);
+}
+
+.user:hover{
+    background-color: hsl(180deg 5% 92%);
+}
+
+.user img{
+    width: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.grey{
+    font-size: x-small;
+    color: lightgray;
+}
+
+.hour{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: x-small;
+    color: lightgrey;
+}
+
+.chat{
+    height: calc(100% - 120px);
+    padding-top: 30px;
+    padding-left: 100px;
+    padding-right: 100px;
+    background-image: url(../img/mine.jpg);
+    overflow-y: scroll;
+    display: flex;
+    flex-flow: column;
+    align-content: flex-end;
+}
+
+.box{
+    width: 50%;
+    margin: 10px;
+    border-radius: 10px;
+    position: relative;
+    font-size: small;
+    display: flex;
+    justify-content: space-between;
+}
+
+.box i{
+    padding: 10px 20px;
+    opacity: 0;
+}
+
+.box i:hover{
+    opacity: 1;
+}
+
+.dropdown{
+    position: relative;
+}
+
+.dropdown-content{
+position: absolute;
+top: 20px;
+background-color: white;
+z-index: 20;
+display: none;
+}
+
+.dropdown-content p:hover{
+    background-color: lightgray;
+}
+
+.dropdown-content:hover{
+    display: block;
+}
+
+.dropdown i:hover ~ .dropdown-content{
+    display: block;
+}
+
+.dropdown-content p{
+    padding: 10px;
+}
+
+.box .corpo{
+    padding: 10px 20px;
+    padding-bottom: 20px;
+}
+
+.box.sent{
+    background-color: hsl(94deg 84% 85%);
+    align-self: flex-end;
+}
+
+.box.received{
+    background-color: white;
+    align-self: flex-start;
+}
+
+.ora{
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    font-size: xx-small;
+    color: lightgray;
+}
+
+.type{
+    justify-content: space-around;
+    font-size: x-large;
+    color: #b1b1b1;
+}
+
+.type input{
+    width: 80%;
+    height: 80%;
+    border: 0px;
+    border-radius: 20px;
+    padding: 5px;
+}
+
+
+
