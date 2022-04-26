@@ -1,3 +1,4 @@
+
 const app = new Vue({
     el: '#app',
     data: {
@@ -172,10 +173,11 @@ const app = new Vue({
     },
     methods:{
         setDate(){
+            
             this.contacts.forEach(element => {
-                element.messages.forEach(data =>{
-                data.date = dayjs(data.date).format('H:mm')
-                   console.log(data)
+                dayjs.extend(window.dayjs_plugin_customParseFormat) 
+                element.messages.forEach(data =>{    
+                    data.date = dayjs(data.date, 'DD/MM/YYYY HH:mm:ss').format('H:mm')             
                 })
             });
         },

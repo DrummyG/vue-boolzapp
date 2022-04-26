@@ -205,6 +205,10 @@ body{
     position: relative;
 }
 
+.dropdown i{
+    color: #b1b1b1;
+}
+
 .dropdown-content{
 position: absolute;
 top: 20px;
