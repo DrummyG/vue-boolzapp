@@ -172,7 +172,12 @@ const app = new Vue({
     },
     methods:{
         setDate(){
-            
+            this.contacts.forEach(element => {
+                element.messages.forEach(data =>{
+                data.date = dayjs(data.date).format('H:mm')
+                   console.log(data)
+                })
+            });
         },
         filter(){
             this.usersFiltered = this.contacts.filter((item) => item.name.includes(this.filterer))
@@ -203,5 +208,6 @@ const app = new Vue({
     },
     mounted(){
         this.filter()
+        this.setDate()
     }
 })
