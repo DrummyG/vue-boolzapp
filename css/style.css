@@ -203,6 +203,8 @@ body{
 
 .dropdown{
     position: relative;
+    display: inline-block;
+    cursor: pointer;
 }
 
 .dropdown i{
@@ -215,6 +217,7 @@ top: 20px;
 background-color: white;
 z-index: 20;
 display: none;
+cursor: pointer;
 }
 
 .dropdown-content p:hover{
@@ -248,6 +251,10 @@ display: none;
     align-self: flex-start;
 }
 
+.box.saved{
+    display: none;
+}
+
 .ora{
     position: absolute;
     bottom: 5px;
@@ -268,6 +275,10 @@ display: none;
     border: 0px;
     border-radius: 20px;
     padding: 5px;
+}
+
+.fa-plane{
+    cursor: pointer;
 }
 
 

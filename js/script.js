@@ -172,8 +172,7 @@ const app = new Vue({
         data: new Date().getHours() + ':' + new Date().getMinutes()
     },
     methods:{
-        setDate(){
-            
+        setDate(){ 
             this.contacts.forEach(element => {
                 dayjs.extend(window.dayjs_plugin_customParseFormat) 
                 element.messages.forEach(data =>{    
@@ -188,24 +187,60 @@ const app = new Vue({
             this.counter = index
         },
         elimina(messaggio, index){
+            if(messaggio.length == 1){
+                let save = {
+                    date: '',
+                    message: '',
+                    status: 'saver'
+                }
+                messaggio.push(save)
+            }
             messaggio.splice(index, 1)
         },
         aggiungi(user){
-            const nuovoMessaggio = {
-                date: this.data,
-                message: this.add,
-                status: 'sent'
-            }
-            user.messages.push(nuovoMessaggio)
-            this.add = ''
-            setTimeout(() =>{
-                const nuovaRisposta = {
+            if(this.add !== '' & this.add !== ' '){
+                const nuovoMessaggio = {
                     date: this.data,
-                    message: 'La tua faccia',
-                    status: 'received'
+                    message: this.add,
+                    status: 'sent'
                 }
-                user.messages.push(nuovaRisposta)
-            }, 1000)
+                user.messages.push(nuovoMessaggio)
+                this.add = ''
+                setTimeout(() =>{
+                    const nuovaRisposta = {
+                        date: this.data,
+                        message: 'La tua faccia',
+                        status: 'received'
+                    }
+                    user.messages.push(nuovaRisposta)
+                }, 1000)
+            }
+        },
+        classi(text){
+            if(text.status == 'sent'){
+                return 'sent'
+            } else if(text.status == 'received'){
+                return 'received'
+            } else{
+                return 'saved'
+            }
+        },
+        ChatDelete(index){
+            this.contacts.splice(index, 1)
+            this.filter()
+        },
+        AllMessagesDel(user){
+            user.messages.splice(0, user.messages.length - 1)
+            let same = user.messages
+            if(same.length === 1){
+                let save = {
+                    date: '',
+                    message: '',
+                    status: 'saver'
+                }
+                same.push(save)
+                same.splice(0, 1)
+            }
         }
     },
     mounted(){

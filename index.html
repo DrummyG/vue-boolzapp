@@ -63,11 +63,17 @@
                     <div class="buttons">
                         <i class="fa-solid fa-magnifying-glass"></i>
                         <i class="fa-solid fa-paperclip"></i>
-                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                        <div class="dropdown">
+                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                            <div class="dropdown-content">
+                                <p @click="ChatDelete(index)">Elimina chat</p>
+                                <p @click="AllMessagesDel(user)">Elimina messaggi</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="chat">
-                    <div class="box" v-for="(text, index) in user.messages" :class="text.status == 'sent' ? 'sent' : 'received'">
+                    <div class="box" v-for="(text, index) in user.messages" :class="classi(text)" >
                         <p class="corpo">{{text.message}}</p>
                         <div class="dropdown">
                             <i class="fa-solid fa-angle-down"></i>
@@ -82,7 +88,7 @@
                 <div class="type">
                     <i class="fa-regular fa-face-smile"></i>
                     <input type="text" v-model="add" @keyup.enter="aggiungi(user)">
-                    <i class="fa-solid fa-microphone"></i>
+                    <i class="fa-solid" :class="add == ''?'fa-microphone' : 'fa-plane'" @click="aggiungi(user)"></i>
                 </div>
             </div>
         </div>
