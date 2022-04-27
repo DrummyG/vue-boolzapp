@@ -199,7 +199,6 @@ const app = new Vue({
             messaggio.splice(index, 1)
         },
         pageScroll() {
-            // document.querySelector('.chat').scroll(0, 10000)
             this.$nextTick(() =>{
                 document.querySelector('.chat').scroll({
                     left: 0, 
