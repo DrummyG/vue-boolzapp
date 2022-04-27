@@ -14,7 +14,7 @@
 <body>
     <div class="top">
         <div id="app">
-            <div class="side">
+            <div class="side" :class="setter == false ? 'attivo' : ''">
                 <div class="my-user">
                     <div class="profile">
                         <img src="img/avatar_io.jpg" alt="Sofia">
@@ -41,7 +41,7 @@
                 </div>
 
                 <div class="users">
-                    <div class="user" v-for="(user, index) in usersFiltered" @click="effetto(index)" :class="index === counter ? 'active' : ''">
+                    <div class="user" v-for="(user, index) in usersFiltered" @click="effetto(index), responsive(user)" :class="index === counter ? 'active' : ''">
                         <img :src="'img/avatar' + user.avatar + '.jpg'" alt="user.name">
                         <div class="info">
                             <p>{{user.name}}</p>
@@ -51,9 +51,10 @@
                     </div>
                 </div>
             </div>
-            <div class="main" v-for="(user, index) in contacts" :class="index === counter ? 'active' : ''">
+            <div class="main" v-for="(user, index) in contacts" :class="user.visible == false ? 'active' : ''">
                 <div class="my-user">
                     <div class="profile">
+                        <i class="fa-solid fa-arrow-left" @click="goBack(user)"></i>
                         <img :src="'img/avatar' + user.avatar + '.jpg'" alt="user.name">
                         <div class="info">
                             <p>{{user.name}}</p>

@@ -169,7 +169,8 @@ const app = new Vue({
         filterer: '',
         usersFiltered: [],
         add: '',
-        data: new Date().getHours() + ':' + new Date().getMinutes()
+        data: new Date().getHours() + ':' + new Date().getMinutes(),
+        setter: false
     },
     methods:{
         setDate(){ 
@@ -241,6 +242,18 @@ const app = new Vue({
                 same.push(save)
                 same.splice(0, 1)
             }
+        },
+        responsive(user){
+            this.setter = true
+            this.contacts.forEach((item) => {
+                item.visible = true
+            })
+            user.visible = false
+            console.log(user.visible)
+        },
+        goBack(user){
+            user.visible = true
+            this.setter = false
         }
     },
     mounted(){

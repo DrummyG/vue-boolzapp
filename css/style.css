@@ -24,19 +24,22 @@ body{
 }
 
 .side{
- width: 30%;
+ width: 50%;
  height: 100%;
  background-color: white;
+ display: none;
+ margin: 0 auto;
 }
 
 .main{
     border-left: 1px solid lightgray;
-    width: 70%;
+    width: 50%;
     height: 100%;
     display: none;
+    margin: 0 auto;
 }
 
-.main.active{
+.main.active, .side.attivo{
     display: block;
 }
 
@@ -278,6 +281,15 @@ cursor: pointer;
 }
 
 .fa-plane{
+    cursor: pointer;
+}
+
+.fa-ellipsis-vertical:hover{
+    color: black;
+}
+
+.fa-arrow-left{
+    margin-right: 5px;
     cursor: pointer;
 }
 
