@@ -198,6 +198,16 @@ const app = new Vue({
             }
             messaggio.splice(index, 1)
         },
+        pageScroll() {
+            // document.querySelector('.chat').scroll(0, 10000)
+            this.$nextTick(() =>{
+                document.querySelector('.chat').scroll({
+                    left: 0, 
+                    top: 10000,
+                    behavior: 'smooth'
+                })
+            })
+        },
         aggiungi(user){
             if(this.add !== '' & this.add !== ' '){
                 const nuovoMessaggio = {
@@ -207,6 +217,7 @@ const app = new Vue({
                 }
                 user.messages.push(nuovoMessaggio)
                 this.add = ''
+                this.pageScroll()
                 setTimeout(() =>{
                     const nuovaRisposta = {
                         date: this.data,
@@ -214,6 +225,7 @@ const app = new Vue({
                         status: 'received'
                     }
                     user.messages.push(nuovaRisposta)
+                    this.pageScroll()
                 }, 1000)
             }
         },
@@ -254,7 +266,7 @@ const app = new Vue({
         goBack(user){
             user.visible = true
             this.setter = false
-        }
+        },
     },
     mounted(){
         this.filter()
