@@ -171,7 +171,8 @@ const app = new Vue({
         add: '',
         data: new Date().getHours() + ':' + new Date().getMinutes(),
         setter: false,
-        write: false
+        write: false,
+        lettura: 'sta scrivendo...'
     },
     methods:{
         setDate(){ 
@@ -227,8 +228,12 @@ const app = new Vue({
                     }
                     user.messages.push(nuovaRisposta)
                     this.pageScroll()
-                    this.write = false
-                }, 1000)
+                    this.lettura = 'online'
+                    setTimeout(() =>{
+                        this.write = false
+                        this.lettura = 'sta scrivendo...'
+                    }, 3000)
+                }, 2000)
             }
         },
         classi(text){
