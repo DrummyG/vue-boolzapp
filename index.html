@@ -45,7 +45,7 @@
                         <img :src="'img/avatar' + user.avatar + '.jpg'" alt="user.name">
                         <div class="info">
                             <p>{{user.name}}</p>
-                            <p class="grey">{{user.messages[user.messages.length - 1].message}}</p>
+                            <p class="grey">{{write == true? 'sta scrivendo...' : user.messages[user.messages.length - 1].message}}</p>
                         </div>
                         <p class="hour">{{user.messages[user.messages.length - 1].date}}</p>
                     </div>
@@ -58,7 +58,7 @@
                         <img :src="'img/avatar' + user.avatar + '.jpg'" alt="user.name">
                         <div class="info">
                             <p>{{user.name}}</p>
-                            <p class="grey">ultimo accesso oggi alle {{user.messages[user.messages.length - 1].date}}</p>
+                            <p class="grey">{{write == true? 'sta scrivendo...' : 'ultimo accesso oggi alle ' + user.messages[user.messages.length - 1].message}}</p>
                         </div>
                     </div>
                     <div class="buttons">

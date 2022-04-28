@@ -170,7 +170,8 @@ const app = new Vue({
         usersFiltered: [],
         add: '',
         data: new Date().getHours() + ':' + new Date().getMinutes(),
-        setter: false
+        setter: false,
+        write: false
     },
     methods:{
         setDate(){ 
@@ -215,6 +216,7 @@ const app = new Vue({
                     status: 'sent'
                 }
                 user.messages.push(nuovoMessaggio)
+                this.write = true
                 this.add = ''
                 this.pageScroll()
                 setTimeout(() =>{
@@ -225,6 +227,7 @@ const app = new Vue({
                     }
                     user.messages.push(nuovaRisposta)
                     this.pageScroll()
+                    this.write = false
                 }, 1000)
             }
         },
